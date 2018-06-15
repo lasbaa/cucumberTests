@@ -1,5 +1,8 @@
 package gradle.cucumber;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -25,6 +28,13 @@ public class StepDefinitions {
     {
         driver = new ChromeDriver();
         driver.get("http://www.google.com");
+    }
+    @When ("I search hello word")
+    public void i_search_world() throws InterruptedException
+    {
+    	WebElement recherche = driver.findElement(By.name("q"));
+    	recherche.sendKeys("hello word" + Keys.ENTER);
+        Thread.sleep(5000);
     }
     
     @Then("^I close the browser$")
